@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="templates/static/css/style.css"
+    />
+    <!--{{url_for('static', filename='css/style.css')}}-->
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <title>Register Complaint</title>
+    <style>
+      .mt-50 {
+        margin-top: 100px;
+        margin-left: 50px;
+      }
+      .mt-20 {
+        margin-top: 20px;
+      }
+      .container-home {
+        float: left;
+      }
+      .card {
+        margin-right: 150px;
+        margin-top: 50px;
+      }
+      .bg-nav {
+        background: #159957; /* fallback for old browsers */
+        background: -webkit-linear-gradient(
+          to right,
+          #155799,
+          #159957
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+          to right,
+          #155799,
+          #159957
+        ) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+      .mt-50 {
+        margin-top: 100px;
+        margin-left: 50px;
+      }
+      .mt-20 {
+        margin-top: 20px;
+      }
+      .container-home {
+        float: left;
+      }
+      .card {
+        margin-right: 150px;
+        margin-top: 50px;
+      }
+      .glyphicon {
+        color: white;
+        size: 40px;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Roboto", sans-serif;
+      }
+      .left_area h3 {
+        color: #fff;
+        margin: 0;
+        text-transform: uppercase;
+        font-size: 22px;
+        font-weight: 900;
+      }
+      .left_area span {
+        color: #19b3d3;
+      }
+      .logout_btn:hover {
+        background: #0b87a6;
+      }
+      .sidebar {
+        z-index: 1;
+        top: 0;
+        background: linear-gradient(to bottom, #155799, #159957) !important;
+        margin-top: 47px;
+        margin-bottom: 50px;
+        padding-top: 30px;
+        position: fixed;
+        left: 0;
+        width: 250px;
+        height: calc(100% - 5%);
+        transition: 0.5s;
+        transition-property: left;
+        overflow-y: auto;
+      }
+      .profile_info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .sidebar .profile_info .profile_image {
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+        margin-bottom: 10px;
+      }
+      .sidebar .profile_info h4 {
+        color: #ccc;
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+      .sidebar a {
+        color: #fff;
+        display: block;
+        width: 100%;
+        line-height: 60px;
+        text-decoration: none;
+        padding-left: 40px;
+        box-sizing: border-box;
+        transition: 0.5s;
+        transition-property: background;
+      }
+      .sidebar a:hover {
+        background: #19b3d3;
+      }
+      .sidebar i {
+        padding-right: 10px;
+      }
+      label #sidebar_btn {
+        z-index: 1;
+        color: #fff;
+        position: fixed;
+        cursor: pointer;
+        left: 300px;
+        font-size: 20px;
+        margin: 5px 0;
+        transition: 0.5s;
+        transition-property: color;
+      }
+      label #sidebar_btn:hover {
+        color: #19b3d3;
+      }
+      #check:checked ~ .sidebar {
+        left: -185px;
+      }
+      #check:checked ~ .sidebar a span {
+        display: none;
+      }
+      #check:checked ~ .sidebar a {
+        font-size: 20px;
+        margin-left: 165px;
+        width: 100%;
+      }
+      .content {
+        width: (100% - 250px);
+        margin-top: 60px;
+        padding: 20px;
+        margin-left: 250px;
+        background: url(background.png) no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 100vh;
+        transition: 0.5s;
+      }
+      #check:checked ~ .content {
+        margin-left: 60px;
+      }
+      #check:checked ~ .sidebar .profile_info {
+        display: none;
+      }
+      #check {
+        display: none;
+      }
+      .mobile_nav {
+        display: none;
+      }
+      .content .card p {
+        background: #fff;
+        padding: 15px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        opacity: 0.8;
+      }
+      /* Responsive CSS */
+      @media screen and (max-width: 780px) {
+        .sidebar {
+          display: none;
+        }
+      }
+      #sidebar_btn {
+        display: none;
+      }
+      .content {
+        margin-left: 0;
+        margin-top: 0;
+        padding: 10px 20px;
+        transition: 0s;
+      }
+      #check:checked ~ .content {
+        margin-left: 0;
+      }
+      .mobile_nav {
+        display: block;
+        width: calc(100% - 0%);
+      }
+      .nav_bar {
+        background: #222;
+        width: (100% - 0px);
+        margin-top: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+      }
+      .nav_bar .mobile_profile_image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+      .nav_bar .nav_btn {
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+        transition: 0.5s;
+        transition-property: color;
+      }
+      .nav_bar .nav_btn:hover {
+        color: #19b3d3;
+      }
+      .mobile_nav_items {
+        background: #2f323a;
+        display: none;
+      }
+      .mobile_nav_items a {
+        color: #fff;
+        display: block;
+        text-align: center;
+        letter-spacing: 1px;
+        line-height: 60px;
+        text-decoration: none;
+        box-sizing: border-box;
+        transition: 0.5s;
+        transition-property: background;
+      }
+      .mobile_nav_items a:hover {
+        background: #19b3d3;
+      }
+      .mobile_nav_items i {
+        padding-right: 10px;
+      }
+      .active {
+        display: block;
+      }
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar bg-nav">
+      <a href="" class="navbar-brand">Incident Lodging</a>
+      
+    </nav>
+    <div>
+      <div class="row">
+        <div class="col-md-3">
+          <!--<h1 class="text-light mt-50" style="font-size: 100px;">Bring the Power of The Nation in You</h1>-->
+          <input type="checkbox" id="check" />
+          <div class="mobile_nav">
+            <div class="mobile_nav_items">
+              <a href="/"><i class="fas fa-desktop"></i><span>Home</span></a>
+              <a href="/register_complaint"
+                ><i class="fas fa-cogs"></i><span>Register Complaint</span></a
+              >
+              
+              <a href="/helpline"><i class="fas fa-th"></i><span>Helpline</span></a>
+             
+              <a href="#"
+                ><i class="fas fa-sliders-h"></i><span>Contact Us</span></a
+              >
+            </div>
+          </div>
+          <div class="sidebar">
+            <div class="profile_info">
+              <img src="1.png" class="profile_image" alt="" />
+              <!--<h4>Jessica</h4>-->
+            </div>
+            <a href="/"><i class="fas fa-desktop"></i><span>Home</span></a>
+            <a href="/register_complaint"
+              ><i class="fas fa-cogs"></i><span>Register Complaint</span></a
+            >
+            
+            <a href="/helpline"><i class="fas fa-th"></i><span>Helpline</span></a>
+            
+            <a href="/contactus"
+              ><i class="fas fa-sliders-h"></i><span>Contact Us</span></a
+            >
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-body">
+              <form
+                class="form-home"
+                method="post"
+                action="/incident_registration"
+              >
+                <h3 class="mt-20">Incident Registration Form</h3>
+                <br />
+                <label>Name</label><br />
+                <input type="text" class="form-control" name="cname" /><br />
+
+
+
+                <label>Email id</label><br />
+                <input type="email" class="form-control" name="cemail" /><br />
+
+                
+                <label>Description</label><br />
+                <textarea  class="form-control" name="description"
+                rows="7" cols="50"></textarea>
+                <!--<input
+                  type="text area"
+                  class="form-control"
+                  name="description"
+                  rows="7" cols="50"
+                />--><br /><br />
+
+                <input
+                  type="submit"
+                  class="btn btn-primary btn-block btn-lg"
+                  value="Register"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.onscroll = function () {
+        myFunction();
+      };
+
+      var navbar = document.getElementById("navbar");
+      var sticky = navbar.offsetTop;
+
+      function myFunction() {
+        if (window.pageYOffset >= sticky) {
+          navbar.classList.add("sticky");
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      }
+
+      
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
